@@ -39,20 +39,22 @@
 
         const view = new MapView({
             map: {
-                basemap: "arcgis-newspaper"
+                basemap: "arcgis-imagery"
             },
             container: "viewDiv",
             center: {
-                latitude: 40.7353,
-                longitude: -3.149945
+                latitude: 27.380413404297233,
+                longitude: 33.63218741310402
+
             },
-            zoom: 4
+            zoom: 18
         });
 
         document.getElementById('btn').addEventListener('click', e => {
             alert('Captured click!')
         })
 
+        console.log("Desert Breath: https://goo.gl/maps/zbsEgXqFPwtFYPng7")
     </script>
 </head>
 

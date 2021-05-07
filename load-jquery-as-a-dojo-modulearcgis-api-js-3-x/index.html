@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>CodePen - Load jQuery as a Dojo module - ArcGIS API JS 3.x</title>
+    <title>Load jQuery as a Dojo module - ArcGIS API JS 3.x</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,7 +26,7 @@
             top: 30px;
             right: 30px;
         }
-    </style>>
+    </style>
 
 </head>
 
@@ -43,14 +43,16 @@
         ], function (Map) {
 
             map = new Map('mapDiv', {
-                center: [-3.674, 40.439],
-                zoom: 14,
-                basemap: 'streets-navigation-vector'
+                center: [-72.5449833092485, -13.162988777150106],
+                zoom: 18,
+                basemap: 'satellite'
             });
             // document.getElementById("btn")
             $('.btn').click(function () {
                 alert('Event captured using jQuery!');
             });
+
+            console.log("Machu Pichu https://goo.gl/maps/Bnj171ya6KyyWEfi6");
         });
 
     </script>
