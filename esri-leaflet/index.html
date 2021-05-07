@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - Esri Leaflet</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel='stylesheet' href='https://unpkg.com/leaflet@1.6.0/dist/leaflet.css'>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="map"></div>
+
+    <!-- Load Leaflet from CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <!-- Load Esri Leaflet from CDN -->
+    <script src="https://unpkg.com/esri-leaflet@3.0.0/dist/esri-leaflet.js"></script>
+    <script src="https://unpkg.com/esri-leaflet-vector@3.0.0/dist/esri-leaflet-vector.js"></script>
+
+    <script>
+        const map = L.map('map').setView([40, -4], 6);
+        L.esri.Vector.vectorBasemapLayer("ArcGIS:Streets", {
+            apiKey: "AAPK6bfcda4c1f7643e19c9157fa72b7237azPVGdmpu1ztr4q79ZxX1Y5IDDOyd84YV0dP41oHzLnXGHEpdXdRgpAT9M3BCOYUQ"
+        }).addTo(map);
+
+        L.esri.featureLayer({
+            url: '//services3.arcgis.com/FrTO2wfz5ckEyZcp/arcgis/rest/services/poblacion_capitales_provincia_2014/FeatureServer/0'
+        }).addTo(map);
+    </script>
+
+</body>
+
+</html>

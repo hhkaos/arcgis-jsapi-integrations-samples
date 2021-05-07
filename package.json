@@ -1,0 +1,19 @@
+{
+  "name": "arcgis-jsapi-integrations-samples",
+  "version": "1.0.0",
+  "description": "Samples for the frameworks session in the GIS Development Expert course at Esri Spain",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Raul Jimenez <rjimenez@esri.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1"
+  }
+}

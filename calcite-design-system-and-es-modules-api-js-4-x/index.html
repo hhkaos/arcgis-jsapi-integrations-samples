@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="calcite">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Load jQuery with ES Modules & ArcGIS API for JavaScript 4.x</title>
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%
+        }
+
+        #btn {
+            position: absolute;
+            z-index: 1;
+            top: 30px;
+            right: 30px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css" />
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/1.0.0-beta.52/calcite.css" />
+
+    <script src="https://js.arcgis.com/4.19/"></script>
+
+    <script type="module" src="https://js.arcgis.com/calcite-components/1.0.0-beta.52/calcite.esm.js"></script>
+    <script nomodule="" src="https://js.arcgis.com/calcite-components/1.0.0-beta.52/calcite.js"></script>
+
+    <script type="module">
+
+        import MapView from "https://js.arcgis.com/4.19/@arcgis/core/views/MapView.js";
+        import esriConfig from "https://js.arcgis.com/4.19/@arcgis/core/config.js";
+
+        esriConfig.apiKey = "AAPK6bfcda4c1f7643e19c9157fa72b7237azPVGdmpu1ztr4q79ZxX1Y5IDDOyd84YV0dP41oHzLnXGHEpdXdRgpAT9M3BCOYUQ";
+
+        const view = new MapView({
+            map: {
+                basemap: "arcgis-newspaper"
+            },
+            container: "viewDiv",
+            center: {
+                latitude: 40.7353,
+                longitude: -3.149945
+            },
+            zoom: 4
+        });
+
+        document.getElementById('btn').addEventListener('click', e => {
+            alert('Captured click!')
+        })
+
+    </script>
+</head>
+
+<body>
+    <div id="viewDiv">
+        <button class="btn btn-default"></button>
+        <calcite-button id="btn" type="submit">Capture event</calcite-button>
+
+    </div>
+</body>
+
+</html>

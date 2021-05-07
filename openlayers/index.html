@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>OpenLayers: Display a map</title>
+
+    <style>
+        html,
+        body,
+        #map {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/css/ol.css"
+          type="text/css" />
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/ol-mapbox-style@6.1.4/dist/olms.js"></script>
+    <script src="https://unpkg.com/ol-popup@4.0.0"></script>
+    <link rel="stylesheet" href="https://unpkg.com/ol-popup@4.0.0/src/ol-popup.css" />
+
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <script>
+        const map = new ol.Map({ target: "map" });
+
+        map.setView(
+            new ol.View({
+                center: ol.proj.fromLonLat([31.132249, 29.977251]),
+                zoom: 17
+            })
+        );
+
+        const apiKey = "AAPK6bfcda4c1f7643e19c9157fa72b7237azPVGdmpu1ztr4q79ZxX1Y5IDDOyd84YV0dP41oHzLnXGHEpdXdRgpAT9M3BCOYUQ";
+        const basemapId = "ArcGIS:Imagery:Standard";
+        const basemapURL = `https://basemaps-api.arcgis.com/arcgis/rest/services/styles/${basemapId}?type=style&token=${apiKey}`;
+
+        olms(map, basemapURL).then(function (map) {
+
+            const pointLayer = new ol.layer.Vector({
+                source: new ol.source.Vector({
+                    format: new ol.format.GeoJSON(),
+                    url: "https://services1.arcgis.com/FLgshDLgxaIsVNWq/arcgis/rest/services/Giza_Complex/FeatureServer/0/query?where=1%3D1&outFields=*&returnGeometry=true&f=geojson"
+                })
+            });
+            map.addLayer(pointLayer);
+
+            const popup = new Popup();
+            map.addOverlay(popup);
+
+            map.on("click", (event) => {
+                const feature = map.getFeaturesAtPixel(event.pixel, {
+                    layerFilter: l => l === pointLayer
+                })[0];
+                if (feature) {
+                    popup.show(event.coordinate, `<h4>Pyramid of ${feature.get('Owner')}</h4>Alias ${feature.get('Alias')}`);
+                    return;
+                }
+
+                popup.hide();
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Maplibre: Add a vector tile layer</title>
+</head>
+
+<body>
+
+    <html>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+        <script src="https://cdn.maptiler.com/maplibre-gl-js/v1.13.0-rc.4/mapbox-gl.js"></script>
+        <link href="https://cdn.maptiler.com/maplibre-gl-js/v1.13.0-rc.4/mapbox-gl.css" rel="stylesheet" />
+        <!-- <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+        <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" /> -->
+        <style>
+            html,
+            body,
+            #map {
+                padding: 0;
+                margin: 0;
+                height: 100%;
+                width: 100%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="map"></div>
+    </body>
+
+    <script>
+        const apiKey = "AAPK6bfcda4c1f7643e19c9157fa72b7237azPVGdmpu1ztr4q79ZxX1Y5IDDOyd84YV0dP41oHzLnXGHEpdXdRgpAT9M3BCOYUQ";
+        const basemapEnum = "ArcGIS:Streets";
+        const map = new mapboxgl.Map({
+            container: "map", // the id of the div element
+            style: `https://basemaps-api.arcgis.com/arcgis/rest/services/styles/${basemapEnum}?type=style&token=${apiKey}`,
+            zoom: 12, // starting zoom
+            center: [-118.805, 34.027] // starting location [longitude, latitude]
+        });
+
+        map.once("load", () => {
+            // This code runs once the base style has finished loading.
+
+            map.addSource("parcels", {
+                type: "vector",
+                tiles: ["https://vectortileservices3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Santa_Monica_Mountains_Parcels_VTL/VectorTileServer/tile/{z}/{y}/{x}.pbf"]
+            });
+
+            map.addLayer({
+                id: "parcels-fill",
+                type: "fill",
+                source: "parcels",
+                "source-layer": "Santa_Monica_Mountains_Parcels",
+                paint: {
+                    "fill-color": "hsl(200, 80%, 50%)",
+                    "fill-opacity": 0.5,
+                    "fill-outline-color": "white"
+                }
+            });
+
+        });
+
+    </script>
+
+    </html>
+    <!-- partial -->
+
+</body>
+
+</html>
