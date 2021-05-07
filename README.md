@@ -8,3 +8,4 @@ JavaScript samples using ArcGIS in combination with other libraries, developer t
 - [MapLibre](https://hhkaos.github.io/arcgis-jsapi-integrations-samples/maplibre)
 - [Calcite Maps (JSAPI 3.x)](https://hhkaos.github.io/arcgis-jsapi-integrations-samples/calcite-map-3-x-starter)
 - [Calcite Maps (JSAPI 4.x)](https://hhkaos.github.io/arcgis-jsapi-integrations-samples/calcite-map-4-x-starter)
+- [Angular Data Binding](https://hhkaos.github.io/arcgis-jsapi-integrations-samples/angular-1)
