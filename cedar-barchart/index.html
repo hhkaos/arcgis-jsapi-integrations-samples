@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - Cedar - Barchart ArcGIS</title>
+    <style>
+        #chart {
+            height: 500px;
+            width: 800px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="chart"></div>
+
+    <!-- load the amCharts base library -->
+    <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <!-- in this case, we only need bar charts, so we'll load the appropriate amCharts script -->
+    <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+    <!-- load the arcgis-rest-js scripts -->
+    <script src="https://unpkg.com/@esri/arcgis-rest-request"></script>
+    <script src="https://unpkg.com/@esri/arcgis-rest-feature-layer"></script>
+    <!-- optionally load an amcharts theme; cedar provides a calcite theme -->
+    <script src="https://unpkg.com/@esri/cedar/dist/umd/themes/amCharts/calcite.js"></script>
+    <!-- load cedar -->
+    <script src="https://unpkg.com/@esri/cedar/dist/umd/cedar.js"></script>
+    <script>
+
+        // connect to the data
+        var datasets = [{
+            "url": "https://services.arcgis.com/uDTUpUPbk8X8mXwl/arcgis/rest/services/Public_Schools_in_Onondaga_County/FeatureServer/0",
+            "name": "schools",
+            "query": {
+                "orderByFields": "Number_of_SUM ASC",
+                "groupByFieldsForStatistics": "Type",
+                "outStatistics": [{
+                    "statisticType": "sum",
+                    "onStatisticField": "Number_of",
+                    "outStatisticFieldName": "Number_of_SUM"
+                }]
+            }
+        }];
+
+
+
+        // designate a one or more series to show the data on the chart
+        var series = [{
+            "category": { "field": "Type", "label": "Type of school" },
+            "value": { "field": "Number_of_SUM", "label": "Number of Students" },
+            "source": "schools"
+        }];
+
+        // optionally override any of the cart type's default styles
+        var overrides = {
+            "categoryAxis": {
+                "labelRotation": -45
+            }
+        }
+
+        //create a cedar chart using the known 'bar' type
+
+        var chart = new cedar.Chart('chart', { "type": "bar" })
+            .datasets(datasets)
+            .series(series)
+            .overrides(overrides);
+
+
+
+        // show the chart and bind it to the DOM
+        chart.show();
+
+    </script>
+
+</body>
+
+</html>

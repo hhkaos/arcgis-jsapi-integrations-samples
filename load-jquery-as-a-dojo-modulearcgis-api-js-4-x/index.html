@@ -42,11 +42,16 @@
         require([
             'esri/Map',
             'esri/views/SceneView',
+            'esri/config',
             'dojo/domReady!'
-        ], function (Map, SceneView) {
+        ], function (Map, SceneView, esriConfig) {
+
+            // API Key mandatory by TOS from >= 4.19
+            esriConfig.apiKey = "AAPK85e5fefd021e4b88a873643f715f1641cpcnQ9mmkutmUNPPxRkUQGolD4bth4jIVGBhGadWEPYKM17ATtJz9XFtS_VS8ST7";
 
             const map = new Map({
-                basemap: 'satellite',
+                // basemap: 'arcgis-topographic',
+                basemap: 'osm-standard-relief',
                 ground: 'world-elevation'
             });
 

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ArcGIS API for JS 4.x + Vue.js</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Load a basic web scene - 4.7</title>
+    <script>
+        window.dojoConfig = {
+            packages: [
+                {
+                    name: "vue",
+                    location: "https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11",
+                    main: "vue"
+                }
+            ]
+        };
+    </script>
+    <link rel='stylesheet' href='https://js.arcgis.com/4.15/esri/css/main.css'>
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            display: grid;
+            grid-template-columns: 60% 40%;
+            grid-gap: 10px;
+        }
+
+        #info {
+            padding: 1rem 1rem 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="info" class="esri-widget">
+        <camera-info v-bind:camera="camera"></camera-info>
+    </div>
+    <div id="viewDiv"></div>
+    <div id="info-out">
+        <pre>{{ camera }}</pre>
+    </div>
+    <script src='https://js.arcgis.com/4.15/'></script>
+    <script src="./script.js"></script>
+
+</body>
+
+</html>

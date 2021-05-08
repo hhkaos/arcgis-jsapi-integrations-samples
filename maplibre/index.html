@@ -3,35 +3,28 @@
 
 <head>
     <meta charset="UTF-8">
+
     <title>Maplibre: Add a vector tile layer</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://cdn.maptiler.com/maplibre-gl-js/v1.13.0-rc.4/mapbox-gl.js"></script>
+    <link href="https://cdn.maptiler.com/maplibre-gl-js/v1.13.0-rc.4/mapbox-gl.css" rel="stylesheet" />
+    <!-- <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+        <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" /> -->
+    <style>
+        html,
+        body,
+        #map {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
+    <div id="map"></div>
 
-    <html>
-
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-        <script src="https://cdn.maptiler.com/maplibre-gl-js/v1.13.0-rc.4/mapbox-gl.js"></script>
-        <link href="https://cdn.maptiler.com/maplibre-gl-js/v1.13.0-rc.4/mapbox-gl.css" rel="stylesheet" />
-        <!-- <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
-        <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" /> -->
-        <style>
-            html,
-            body,
-            #map {
-                padding: 0;
-                margin: 0;
-                height: 100%;
-                width: 100%;
-            }
-        </style>
-    </head>
-
-    <body>
-        <div id="map"></div>
-    </body>
 
     <script>
         const apiKey = "AAPK6bfcda4c1f7643e19c9157fa72b7237azPVGdmpu1ztr4q79ZxX1Y5IDDOyd84YV0dP41oHzLnXGHEpdXdRgpAT9M3BCOYUQ";
@@ -67,8 +60,6 @@
 
     </script>
 
-    </html>
-    <!-- partial -->
 
 </body>
 
